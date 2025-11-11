@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c35f3deab72f3da4aa7547571f10f8b6, type: 3}
+  m_Name: HullPartDefault
+  m_EditorClassIdentifier: 
+  typeId: 0
+  partId: 0
+  displayName: Wooden Hull
+  description: 'Not the strongest, not the weakest.
+
+    Not exceptional, but cheap
+    and sturdy.
+
+    Every begginer pirate''s choice.'
+  hullPrefab: {fileID: -8008011971637684643, guid: 07c314145b1534f4b891296515635da7, type: 3}

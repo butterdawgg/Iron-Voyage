@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755dc58627bdb69448839363d60c634f, type: 3}
+  m_Name: ShipPartDefault
+  m_EditorClassIdentifier: 
+  typeId: 1
+  partId: 0
+  displayName: Simple Sails
+  description: 'Sails made from old canvas.
+
+    Not the most efficient
+
+    but
+    get the job done.'
+  shipPrefab: {fileID: 2029858252686752137, guid: c200c76b4dd84e64b92b10b189180f78, type: 3}
