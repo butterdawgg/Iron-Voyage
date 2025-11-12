@@ -15,10 +15,8 @@ MonoBehaviour:
   typeId: 1
   partId: 0
   displayName: Simple Sails
-  description: 'Sails made from old canvas.
-
-    Not the most efficient
+  description: 'Sails made from weathered canvas. Not the most efficient
 
     but
-    get the job done.'
+    gets the job done.'
   shipPrefab: {fileID: 2029858252686752137, guid: c200c76b4dd84e64b92b10b189180f78, type: 3}

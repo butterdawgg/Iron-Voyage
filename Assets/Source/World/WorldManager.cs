@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(ChunkManager))]
 [RequireComponent(typeof(EnemyManager))]
@@ -16,11 +17,18 @@ public class WorldManager : MonoBehaviour
     [Tooltip("West (-X) border plane of the world")]
     [SerializeField] private Border westBorder;
 
+    [SerializeField] private int shopSceneId;
+    [SerializeField] private int winSceneId;
+    [SerializeField] private int loseSceneId;
+    [SerializeField] private HUDManager hudManager;
+
     private ChunkManager chunkManager;
     private EnemyManager enemyManager;
     private PlayerManager playerManager;
 
     private Player player;
+    private bool playerDead;
+    private bool playerWon;
 
     private void Awake()
     {
@@ -41,7 +49,67 @@ public class WorldManager : MonoBehaviour
 
     private void Update()
     {
+        if (playerDead || playerWon)
+            return;
+
+        if (player.IsDead)
+        {
+            OnPlayerDeath();
+
+            return;
+        }
+
         enemyManager.UpdateEnemies(player);
+
+        int killCount = enemyManager.GetKillCount();
+        int targetKillCount = enemyManager.GetTargetKillCount();
+
+        if (killCount >= targetKillCount)
+        {
+            OnPlayerWin();
+
+            return;
+        }
+
+        if (hudManager == null)
+            return;
+
+        hudManager.SetHealthFraction(player.GetHealth() / player.GetMaxHealth());
+
+        hudManager.SetEnemyKillCountText(killCount +
+            " / " + targetKillCount);
+
+        hudManager.SetRoundText(SerializeManager.GetRound() +
+            " / " + enemyManager.GetRoundCount());
+    }
+
+    private void OnPlayerDeath()
+    {
+        playerDead = true;
+
+        enemyManager.DisableEnemies();
+
+        SceneManager.LoadScene(loseSceneId);
+    }
+
+    private void OnPlayerWin()
+    {
+        playerWon = true;
+
+        enemyManager.DisableEnemies();
+
+        int roundId = SerializeManager.GetRound();
+
+        if (roundId >= enemyManager.GetRoundCount() - 1)
+        {
+            SerializeManager.ResetProgress();
+            SceneManager.LoadScene(winSceneId);
+        }
+        else
+        {
+            SerializeManager.SetRound(roundId + 1);
+            SceneManager.LoadScene(shopSceneId);
+        }
     }
 
     private void PlaceBorders()

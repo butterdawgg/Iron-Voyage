@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject[] destroyOnDeath;
     [Tooltip("Visual effect to be played on death")]
     [SerializeField] private VisualEffect deathVfx;
+    [Tooltip("HP bar graphic")]
+    [SerializeField] private Transform healthBar;
 
     [Header("Attacking")]
     [Tooltip("Leave empty to make the enemy a kamikaze")]
@@ -117,10 +119,7 @@ public class Enemy : MonoBehaviour
 
     private void OnDeath()
     {
-        IsDead = true;
-
-        gunController.DisableGuns(guns);
-        shipController.SetMoveDirection(Vector3.zero);
+        Disable();
 
         foreach (var obj in destroyOnDeath)
         {
@@ -150,5 +149,13 @@ public class Enemy : MonoBehaviour
     public float GetHealth()
     {
         return health;
+    }
+
+    public void Disable()
+    {
+        IsDead = true;
+
+        gunController.DisableGuns(guns);
+        shipController.enabled = false;
     }
 }

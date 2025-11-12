@@ -7,9 +7,15 @@ public abstract class PlayerPart : ScriptableObject
     [Tooltip("ID of the part itself")]
     public int partId = 0;
     [Tooltip("Name of the part displayed in the shop")]
-    public string displayName;
+    public string displayName = "";
     [TextArea, Tooltip("Description of the part displayed in the shop")]
-    public string description;
+    public string description = "";
+    [Tooltip("Price to unlock the part in the shop")]
+    public int unlockPrice = 0;
+    [Tooltip("In which range of rounds can this part appear in the shop")]
+    public Vector2Int availability;
+    [Tooltip("Probability of finding the part (lower => rarer)")]
+    public float rarity;
 
     public string GetStringId()
     {

@@ -24,4 +24,14 @@ public class PlayerHullController : MonoBehaviour
     {
         return hull.GetHealth();
     }
+
+    public float GetMaxHealth()
+    {
+        return hull.GetMaxHealth();
+    }
+
+    public bool IsDead()
+    {
+        return hull.GetHealth() <= 0f;
+    }
 }

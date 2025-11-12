@@ -17,6 +17,7 @@ public class EnemyManager : MonoBehaviour
     private List<Enemy> enemies = new();
 
     private float spawnTimer = 0f;
+    private int enemyKillCount;
 
     public void Initialize()
     {
@@ -41,11 +42,42 @@ public class EnemyManager : MonoBehaviour
             TrySpawnEnemy(player, currentRound);
         }
 
+        foreach (var enemy in enemies)
+        {
+            if (enemy.IsDead)
+                enemyKillCount++;
+        }
+
         enemies.RemoveAll(enemy => enemy.IsDead);
 
         foreach (var enemy in enemies)
         {
             enemy.SetTargetPosition(player.transform.position);
+        }
+    }
+
+    public int GetTargetKillCount()
+    {
+        int roundId = SerializeManager.GetRound();
+        roundId = Mathf.Clamp(roundId, 0, rounds.Length - 1);
+        return rounds[roundId].enemyKillCount;
+    }
+
+    public int GetKillCount()
+    {
+        return enemyKillCount;
+    }
+
+    public int GetRoundCount()
+    {
+        return rounds.Length;
+    }
+
+    public void DisableEnemies()
+    {
+        foreach (var enemy in enemies)
+        {
+            enemy.Disable();
         }
     }
 
@@ -224,4 +256,5 @@ public struct Round
 {
     public float enemySpawnRate;
     public EnemyVariant[] enemyVariants;
+    public int enemyKillCount;
 }

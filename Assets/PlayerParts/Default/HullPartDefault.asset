@@ -15,10 +15,6 @@ MonoBehaviour:
   typeId: 0
   partId: 0
   displayName: Wooden Hull
-  description: 'Not the strongest, not the weakest.
-
-    Not exceptional, but cheap
-    and sturdy.
-
-    Every begginer pirate''s choice.'
+  description: Not the strongest, not the weakest. Not exceptional, but cheap and
+    sturdy. Every begginer pirate's choice.
   hullPrefab: {fileID: -8008011971637684643, guid: 07c314145b1534f4b891296515635da7, type: 3}

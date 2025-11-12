@@ -72,4 +72,14 @@ public static class SerializeManager
     {
         return GetInt("round_number", 0);
     }
+
+    public static bool GetFirstPlay()
+    {
+        return GetBool("first_play", true);
+    }
+
+    public static void SetFirstPlay(bool isFirstPlay)
+    {
+        SetBool("first_play", isFirstPlay);
+    }
 }

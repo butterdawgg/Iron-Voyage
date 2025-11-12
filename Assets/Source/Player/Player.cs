@@ -13,6 +13,10 @@ public class Player : MonoBehaviour
     public PlayerGunController GunController { get; private set; }
     public PlayerHullController HullController { get; private set; }
 
+    private PlayerInput input;
+
+    public bool IsDead { get; private set; }
+
     private void Awake()
     {
         CamController = GetComponent<PlayerCameraController>();
@@ -20,12 +24,28 @@ public class Player : MonoBehaviour
         GunController = GetComponent<PlayerGunController>();
         HullController = GetComponent<PlayerHullController>();
 
+        input = GetComponent<PlayerInput>();
+
         CamController.SetTargetOffset(transform.position);
     }
 
     private void Update()
     {
+        if (HullController.IsDead())
+        {
+            OnDeath();
+        }
+
         CamController.SetTargetPos(transform.position);
+    }
+
+    private void OnDeath()
+    {
+        IsDead = true;
+
+        GunController.SetCanShoot(false);
+        ShipController.SetMoveDirection(Vector3.zero);
+        input.enabled = false;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -83,5 +103,10 @@ public class Player : MonoBehaviour
     public float GetHealth()
     {
         return HullController.GetHealth();
+    }
+
+    public float GetMaxHealth()
+    {
+        return HullController.GetMaxHealth();
     }
 }

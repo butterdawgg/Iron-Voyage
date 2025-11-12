@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeId: 2
   partId: 0
-  displayName: Black Powder Cannon
-  description: The ol' reliable.
+  displayName: Old Cannon
+  description: The ol' reliable. Not the best accuracy and rate of fire, let alone
+    damage.
+  unlockPrice: 0
+  availability: {x: 0, y: 0}
+  rarity: 0
   gunPrefab: {fileID: 8560565802105036550, guid: 3815d2e1cc74a0a43bd20ec58fa35826, type: 3}

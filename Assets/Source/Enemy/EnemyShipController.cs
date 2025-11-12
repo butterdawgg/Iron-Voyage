@@ -81,4 +81,9 @@ public class EnemyShipController : MonoBehaviour
     {
         moveDirection = moveDir;
     }
+
+    private void OnDisable()
+    {
+        boxCollider.enabled = false;
+    }
 }
