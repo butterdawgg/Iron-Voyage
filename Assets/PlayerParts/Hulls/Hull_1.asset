@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142b61d5072b76f4aa6c7c56702c0a69, type: 3}
+  m_Name: Hull_1
+  m_EditorClassIdentifier: 
+  typeId: 0
+  partId: 1
+  displayName: Riveted Hull
+  description: Increases total HP and damage absorption
+  unlockPrice: 50
+  availability: {x: 1, y: 2}
+  rarity: 10
+  hullPrefab: {fileID: -8008011971637684643, guid: 07c314145b1534f4b891296515635da7, type: 3}

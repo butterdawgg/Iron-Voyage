@@ -5,12 +5,15 @@ public class PlayerGunController : MonoBehaviour
 {
     [SerializeField] private Transform gunPivot;
     [SerializeField] private float aimCursorSpeed;
+    [SerializeField] private Transform aimDirCursor;
+    [SerializeField] private Transform aimPosCursor;
 
     private List<Gun> guns = new ();
     private Gun activeGun;
 
     private Vector3 aimDirection;
     private bool autoAimPosition;
+    private bool aimDirStopped;
     private Vector3 aimLocalPos;
     private Vector3 aimPosition;
 
@@ -22,15 +25,58 @@ public class PlayerGunController : MonoBehaviour
         if (activeGun == null)
             activeGun = guns[0];
 
-        if (autoAimPosition)
+        if (autoAimPosition && !aimDirStopped)
         {
             aimLocalPos += aimCursorSpeed * Time.deltaTime * aimDirection;
-            aimLocalPos = Vector3.ClampMagnitude(aimLocalPos, activeGun.GetRange());
-
             aimPosition = transform.position + aimLocalPos;
         }
 
+        aimPosition = Vector3.ClampMagnitude(aimPosition -
+            transform.position, activeGun.GetRange()) + transform.position;
+
         activeGun.SetAim(aimPosition, aimDirection);
+
+        ControlCursors();
+    }
+
+    private void ControlCursors()
+    {
+        bool pos = activeGun.DrawAimPosCursor();
+        bool dir = activeGun.DrawAimDirCursor();
+
+        if (pos && dir)
+        {
+            aimPosCursor.gameObject.SetActive(true);
+            aimDirCursor.gameObject.SetActive(true);
+
+            aimPosCursor.position = aimPosition;
+            aimPosCursor.rotation = Quaternion.identity;
+
+            Vector3 direction = aimPosition - transform.position;
+            direction.y = 0f;
+
+            aimDirCursor.rotation = Quaternion.LookRotation(direction);
+        }
+        else if (pos && !dir)
+        {
+            aimPosCursor.gameObject.SetActive(true);
+            aimDirCursor.gameObject.SetActive(false);
+
+            aimPosCursor.position = aimPosition;
+            aimPosCursor.rotation = Quaternion.identity;
+        }
+        else if (!pos && dir)
+        {
+            aimPosCursor.gameObject.SetActive(false);
+            aimDirCursor.gameObject.SetActive(true);
+
+            aimDirCursor.rotation = Quaternion.LookRotation(aimDirection);
+        }
+        else if (!pos && !dir)
+        {
+            aimPosCursor.gameObject.SetActive(false);
+            aimDirCursor.gameObject.SetActive(false);
+        }
     }
 
     // Instatiates a new gun based on the prefab provided
@@ -60,23 +106,37 @@ public class PlayerGunController : MonoBehaviour
         activeGun.SetCanShoot(canShoot);
     }
 
-    public void OnAimDirectionChanged(Vector3 aimDir)
+    public void SetAimPosition(Vector3 aimPos)
     {
+        if (autoAimPosition)
+            return;
+
+        aimPosition = aimPos;
+
+        aimDirection = (aimPos - transform.position).normalized;
+        aimDirection.y = 0f;
+    }
+
+    public void OnAimDirectionChanged(Vector3 aimDir, bool stopped)
+    {
+        if (stopped)
+        {
+            aimDirStopped = true;
+
+            return;
+        }
+
         aimDirection = aimDir;
 
         if (autoAimPosition == false)
             aimLocalPos = Vector3.zero;
 
         autoAimPosition = true;
+        aimDirStopped = false;
     }
 
-    public void OnAimPositionChanged(Vector3 aimPos)
+    public void OnAimPositionChanged()
     {
         autoAimPosition = false;
-        aimPosition = aimPos;
-
-        Vector3 pos = new(transform.position.x, 0f, transform.position.z);
-
-        aimDirection = (aimPos - pos).normalized;
     }
 }

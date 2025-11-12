@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,8 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Button partUnlockButton;
     [SerializeField] private Button partSelectButton;
 
+    [SerializeField] private TextMeshProUGUI moneyText;
+
     private List<PartUnlockWindow> partUnlockWindows = new();
     private List<PartSelectWindow> partSelectWindows = new();
 
@@ -26,7 +29,7 @@ public class ShopManager : MonoBehaviour
 
     private void Awake()
     {
-        availableParts = partData.GetRandomAvailableParts(5).ToList();
+        availableParts = partData.GetRandomAvailableParts(4).ToList();
 
         partUnlockButton.onClick.AddListener(OnPartUnlockButtonClick);
         partSelectButton.onClick.AddListener(OnPartSelectButtonClick);
@@ -45,6 +48,8 @@ public class ShopManager : MonoBehaviour
         {
             window.UpdateWindow();
         }
+
+        moneyText.text = "MONEY: " + SerializeManager.GetMoney();
     }
 
     private void CreatePartUnlockWindows()

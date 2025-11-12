@@ -28,7 +28,6 @@ public class ProjectileLight : Projectile
         }
 
         transform.position = hit.point;
-        transform.parent = hit.transform;
     }
 
     protected override void OnExpiry() { }

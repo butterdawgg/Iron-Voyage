@@ -5,6 +5,8 @@ public abstract class Projectile : MonoBehaviour
 {
     [SerializeField] private GameObject[] destroyOnHit;
     [SerializeField] private VisualEffect hitVfx;
+    [SerializeField] private VisualEffect shootVfx;
+    [SerializeField] private float shootVfxOffset;
 
     private LayerMask hitMask;
 
@@ -37,6 +39,10 @@ public abstract class Projectile : MonoBehaviour
         proj.IsFriendly = isFriendly;
 
         proj.IsDead = false;
+
+        proj.shootVfx.transform.parent = default;
+        proj.shootVfx.transform.position += direction * proj.shootVfxOffset;
+        proj.shootVfx.Play();
     }
 
     private void Update()
@@ -88,15 +94,13 @@ public abstract class Projectile : MonoBehaviour
         IsDead = true;
 
         foreach (var obj in destroyOnHit)
-        {
             Destroy(obj);
-        }
 
         if (hitVfx != null)
-        {
             hitVfx.Play();
-            Destroy(hitVfx, 5f);
-        }
+
+        if (shootVfx != null)
+            Destroy(shootVfx, 5f);
 
         Destroy(gameObject, 5f);
     }

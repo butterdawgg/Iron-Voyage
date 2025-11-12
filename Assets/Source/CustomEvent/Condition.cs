@@ -35,7 +35,7 @@ public class ButtonClick : Condition
     {
         bool result = IsSatisfied;
 
-        if (resets && result)
+        if (resets)
             IsSatisfied = false;
 
         return result;

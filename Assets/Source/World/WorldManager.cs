@@ -79,7 +79,7 @@ public class WorldManager : MonoBehaviour
         hudManager.SetEnemyKillCountText(killCount +
             " / " + targetKillCount);
 
-        hudManager.SetRoundText(SerializeManager.GetRound() +
+        hudManager.SetRoundText(SerializeManager.GetRound() + 1 +
             " / " + enemyManager.GetRoundCount());
     }
 
@@ -107,6 +107,8 @@ public class WorldManager : MonoBehaviour
         }
         else
         {
+            enemyManager.GiveMoneyReward();
+
             SerializeManager.SetRound(roundId + 1);
             SceneManager.LoadScene(shopSceneId);
         }

@@ -65,11 +65,6 @@ public class Cannon : Gun
         return true;
     }
 
-    public override void ScaleParameters(int level)
-    {
-        // TODO: implement
-    }
-
     public override void SetCanShoot(bool canShoot)
     {
         this.canShoot = canShoot;
@@ -89,5 +84,15 @@ public class Cannon : Gun
     public override float GetRange()
     {
         return range;
+    }
+
+    public override bool DrawAimPosCursor()
+    {
+        return false;
+    }
+
+    public override bool DrawAimDirCursor()
+    {
+        return true;
     }
 }

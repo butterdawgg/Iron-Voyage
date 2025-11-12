@@ -197,7 +197,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -277,7 +277,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 20, y: -50}
-  m_SizeDelta: {x: 219.7, y: 50}
+  m_SizeDelta: {x: 211.3, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &105585503
 MonoBehaviour:
@@ -301,8 +301,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'KILL COUNT:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3f81ffd7e97aedd469f27aa478d71c05, type: 2}
+  m_sharedMaterial: {fileID: -994311155810392749, guid: 3f81ffd7e97aedd469f27aa478d71c05, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 8192
   m_textAlignment: 65535
   m_characterSpacing: 0.86
   m_wordSpacing: 0
@@ -505,8 +505,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 12/30
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3f81ffd7e97aedd469f27aa478d71c05, type: 2}
+  m_sharedMaterial: {fileID: -994311155810392749, guid: 3f81ffd7e97aedd469f27aa478d71c05, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -538,7 +538,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 8192
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -762,8 +762,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 12/30
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3f81ffd7e97aedd469f27aa478d71c05, type: 2}
+  m_sharedMaterial: {fileID: -994311155810392749, guid: 3f81ffd7e97aedd469f27aa478d71c05, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -795,7 +795,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 8192
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -984,7 +984,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 20, y: -100}
-  m_SizeDelta: {x: 143.5, y: 50}
+  m_SizeDelta: {x: 115.5, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &617455564
 MonoBehaviour:
@@ -1008,8 +1008,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'ROUND:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3f81ffd7e97aedd469f27aa478d71c05, type: 2}
+  m_sharedMaterial: {fileID: -994311155810392749, guid: 3f81ffd7e97aedd469f27aa478d71c05, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1041,7 +1041,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 8192
   m_textAlignment: 65535
   m_characterSpacing: 0.86
   m_wordSpacing: 0
@@ -1681,7 +1681,7 @@ MonoBehaviour:
   baseChunk: {fileID: 8432550872993256903, guid: 4b1bd01f9f552424b98e9b2fd11d66f1, type: 3}
   generator:
     chunkSize: 16
-    tileSize: 1
+    tileSize: 2
     tileVariants:
     - threshold: 0.7
       tilePrefab: {fileID: 863006755743622939, guid: 388fd6ea6a8089f4fa8b691a52126e12, type: 3}
@@ -1724,18 +1724,81 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rounds:
-  - enemySpawnRate: 0.2
+  - enemySpawnRate: 0.1
+    enemyCap: 5
     enemyVariants:
     - probability: 1
       enemyPrefab: {fileID: 7291324445592976790, guid: f211e75faeff9ee40a02d7e2f807948b, type: 3}
-    enemyKillCount: 3
+    enemyKillCount: 5
+    moneyReward: 200
   - enemySpawnRate: 0.2
+    enemyCap: 10
     enemyVariants:
-    - probability: 1
+    - probability: 0.5
       enemyPrefab: {fileID: 7291324445592976790, guid: f211e75faeff9ee40a02d7e2f807948b, type: 3}
-    enemyKillCount: 3
+    - probability: 0.5
+      enemyPrefab: {fileID: 7291324445592976790, guid: b7c70d7016cfb694f9e1987ebdaf15c2, type: 3}
+    enemyKillCount: 10
+    moneyReward: 300
+  - enemySpawnRate: 0.4
+    enemyCap: 15
+    enemyVariants:
+    - probability: 0.5
+      enemyPrefab: {fileID: 7291324445592976790, guid: f211e75faeff9ee40a02d7e2f807948b, type: 3}
+    - probability: 0.5
+      enemyPrefab: {fileID: 7291324445592976790, guid: b7c70d7016cfb694f9e1987ebdaf15c2, type: 3}
+    enemyKillCount: 15
+    moneyReward: 500
+  - enemySpawnRate: 0.6
+    enemyCap: 20
+    enemyVariants:
+    - probability: 0.4
+      enemyPrefab: {fileID: 7291324445592976790, guid: f211e75faeff9ee40a02d7e2f807948b, type: 3}
+    - probability: 0.4
+      enemyPrefab: {fileID: 7291324445592976790, guid: b7c70d7016cfb694f9e1987ebdaf15c2, type: 3}
+    - probability: 0.2
+      enemyPrefab: {fileID: 7291324445592976790, guid: 44f5e94e22af6164aadd400b03975813, type: 3}
+    enemyKillCount: 20
+    moneyReward: 1000
+  - enemySpawnRate: 0.8
+    enemyCap: 30
+    enemyVariants:
+    - probability: 0.4
+      enemyPrefab: {fileID: 7291324445592976790, guid: f211e75faeff9ee40a02d7e2f807948b, type: 3}
+    - probability: 0.4
+      enemyPrefab: {fileID: 7291324445592976790, guid: b7c70d7016cfb694f9e1987ebdaf15c2, type: 3}
+    - probability: 0.2
+      enemyPrefab: {fileID: 7291324445592976790, guid: 44f5e94e22af6164aadd400b03975813, type: 3}
+    enemyKillCount: 30
+    moneyReward: 2000
+  - enemySpawnRate: 1
+    enemyCap: 50
+    enemyVariants:
+    - probability: 0.3
+      enemyPrefab: {fileID: 7291324445592976790, guid: f211e75faeff9ee40a02d7e2f807948b, type: 3}
+    - probability: 0.3
+      enemyPrefab: {fileID: 7291324445592976790, guid: b7c70d7016cfb694f9e1987ebdaf15c2, type: 3}
+    - probability: 0.3
+      enemyPrefab: {fileID: 7291324445592976790, guid: 44f5e94e22af6164aadd400b03975813, type: 3}
+    - probability: 0.1
+      enemyPrefab: {fileID: 7291324445592976790, guid: ac8d6e68aab40fb47acb3aa5827ebc0b, type: 3}
+    enemyKillCount: 50
+    moneyReward: 4000
+  - enemySpawnRate: 2
+    enemyCap: 100
+    enemyVariants:
+    - probability: 0.25
+      enemyPrefab: {fileID: 7291324445592976790, guid: f211e75faeff9ee40a02d7e2f807948b, type: 3}
+    - probability: 0.25
+      enemyPrefab: {fileID: 7291324445592976790, guid: b7c70d7016cfb694f9e1987ebdaf15c2, type: 3}
+    - probability: 0.3
+      enemyPrefab: {fileID: 7291324445592976790, guid: 44f5e94e22af6164aadd400b03975813, type: 3}
+    - probability: 0.2
+      enemyPrefab: {fileID: 7291324445592976790, guid: ac8d6e68aab40fb47acb3aa5827ebc0b, type: 3}
+    enemyKillCount: 100
+    moneyReward: 10000
   spawnStartDistance: 20
-  spawnStopDistance: 40
+  spawnStopDistance: 30
   navMeshSampleRadius: 2
   maxSpawnAttempts: 15
 --- !u!114 &1131194894

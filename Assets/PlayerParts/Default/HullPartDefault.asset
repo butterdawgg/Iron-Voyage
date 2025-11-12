@@ -17,4 +17,7 @@ MonoBehaviour:
   displayName: Wooden Hull
   description: Not the strongest, not the weakest. Not exceptional, but cheap and
     sturdy. Every begginer pirate's choice.
-  hullPrefab: {fileID: -8008011971637684643, guid: 07c314145b1534f4b891296515635da7, type: 3}
+  unlockPrice: 0
+  availability: {x: 0, y: 0}
+  rarity: 0
+  hullPrefab: {fileID: -8008011971637684643, guid: 6e484a421fdbea24694b30d475cada6e, type: 3}

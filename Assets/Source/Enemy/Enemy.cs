@@ -87,22 +87,39 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        // Path logic:
+        healthBar.localScale = new Vector3(health / maxHealth, 1f, 1f);
+
         agent.SetDestination(targetPosition);
+
+        Vector3 toTarget = targetPosition - transform.position;
+        float distanceToTarget = toTarget.magnitude;
+        Vector3 desiredVel = agent.desiredVelocity;
+
+        // Behave like a kamikaze
+        if (guns.Length <= 0)
+        {
+            if (desiredVel.sqrMagnitude > 0.01f)
+                shipController.SetMoveDirection(desiredVel.normalized);
+            else
+                shipController.SetMoveDirection(Vector3.zero);
+
+            agent.nextPosition = transform.position;
+
+            if (distanceToTarget <= blastDistance)
+                Explode();
+
+            return;
+        }
 
         Vector3 nextCorner = agent.path.corners.Length > 1
             ? agent.path.corners[1]
             : targetPosition;
 
-        Vector3 toTarget = targetPosition - transform.position;
         Vector3 toNextCorner = nextCorner - transform.position;
 
         bool sameDirection = Vector3.Angle(toTarget, toNextCorner) < 5f;
-        float distanceToTarget = toTarget.magnitude;
 
         bool shouldStop = sameDirection && distanceToTarget < stoppingDistance;
-
-        Vector3 desiredVel = agent.desiredVelocity;
 
         if (!shouldStop && desiredVel.sqrMagnitude > 0.01f)
             shipController.SetMoveDirection(desiredVel.normalized);
@@ -130,6 +147,21 @@ public class Enemy : MonoBehaviour
             deathVfx.Play();
 
         Destroy(gameObject, 5f);
+    }
+
+    private void Explode()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius);
+
+        foreach (var collider in colliders)
+        {
+            Player player = collider.GetComponentInParent<Player>();
+
+            if (player != null)
+                player.TakeDamage(blastDamage);
+        }
+
+        OnDeath();
     }
 
     public void SetTargetPosition(Vector3 position)

@@ -39,7 +39,9 @@ public class EnemyManager : MonoBehaviour
         if (spawnTimer >= 1f / currentRound.enemySpawnRate)
         {
             spawnTimer = 0f;
-            TrySpawnEnemy(player, currentRound);
+
+            if (enemies.Count < currentRound.enemyCap)
+                TrySpawnEnemy(player, currentRound);
         }
 
         foreach (var enemy in enemies)
@@ -79,6 +81,15 @@ public class EnemyManager : MonoBehaviour
         {
             enemy.Disable();
         }
+    }
+
+    public void GiveMoneyReward()
+    {
+        int roundId = SerializeManager.GetRound();
+        roundId = Mathf.Clamp(roundId, 0, rounds.Length - 1);
+
+        SerializeManager.SetMoney(SerializeManager.GetMoney() +
+            rounds[roundId].moneyReward);
     }
 
     private void TrySpawnEnemy(Player player, Round round)
@@ -242,8 +253,6 @@ public class EnemyManager : MonoBehaviour
     }
 }
 
-
-
 [System.Serializable]
 public struct EnemyVariant
 {
@@ -255,6 +264,8 @@ public struct EnemyVariant
 public struct Round
 {
     public float enemySpawnRate;
+    public int enemyCap;
     public EnemyVariant[] enemyVariants;
     public int enemyKillCount;
+    public int moneyReward;
 }

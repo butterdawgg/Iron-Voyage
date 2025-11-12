@@ -20,7 +20,14 @@ public class PartUnlockWindow : MonoBehaviour
 
     private void OnUnlockButtonClick()
     {
+        int money = SerializeManager.GetMoney();
+
+        if (money < part.unlockPrice)
+            return;
+
         partData.UnlockPart(part);
+
+        SerializeManager.SetMoney(money - part.unlockPrice);
     }
 
     public void Initialize(PlayerPartData partData, PlayerPart part)
@@ -59,7 +66,7 @@ public class PartUnlockWindow : MonoBehaviour
         else
         {
             unlockButton.interactable = true;
-            unlockButtonText.text = "UNLOCK";
+            unlockButtonText.text = "UNLOCK $" + part.unlockPrice;
         }
     }
 }

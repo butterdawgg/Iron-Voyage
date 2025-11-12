@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public PlayerHullController HullController { get; private set; }
 
     private PlayerInput input;
+    private Vector2 aimPosInput;
 
     public bool IsDead { get; private set; }
 
@@ -37,6 +38,10 @@ public class Player : MonoBehaviour
         }
 
         CamController.SetTargetPos(transform.position);
+
+        Vector3 aimPos = GetAimPosition(aimPosInput);
+
+        GunController.SetAimPosition(aimPos);
     }
 
     private void OnDeath()
@@ -51,7 +56,7 @@ public class Player : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         Vector2 moveInput = context.ReadValue<Vector2>();
-        Vector3 moveDir = new(moveInput.x, 0f, moveInput.y);
+        Vector3 moveDir = new (moveInput.x, 0f, moveInput.y);
 
         ShipController.SetMoveDirection(moveDir);
     }
@@ -67,32 +72,47 @@ public class Player : MonoBehaviour
     public void OnAimDirection(InputAction.CallbackContext context)
     {
         if (context.canceled)
+        {
+            GunController.OnAimDirectionChanged(Vector3.zero, true);
+
             return;
+        }
 
         Vector2 inputDir = context.ReadValue<Vector2>();
 
         if (inputDir.sqrMagnitude < 0.01f)
             return;
 
-        GunController.OnAimDirectionChanged(
-            new Vector3(inputDir.x, 0f, inputDir.y));
+        GunController.OnAimDirectionChanged(GetAimDirection(inputDir), false);
+    }
+
+    private Vector3 GetAimDirection(Vector2 input)
+    {
+        return new Vector3(input.x, 0f, input.y);
     }
 
     public void OnAimPosition(InputAction.CallbackContext context)
     {
+        GunController.OnAimPositionChanged();
+
+        aimPosInput = context.ReadValue<Vector2>();
+    }
+
+    private Vector3 GetAimPosition(Vector2 input)
+    {
         Camera cam = CamController.Camera;
 
         if (cam == null)
-            return;
+            return Vector3.zero;
 
-        Ray ray = cam.ScreenPointToRay(context.ReadValue<Vector2>());
+        Ray ray = cam.ScreenPointToRay(input);
 
         Plane plane = new (Vector3.up, Vector3.zero);
 
         if (!plane.Raycast(ray, out float enter))
-            return;
+            return Vector3.zero;
 
-        GunController.OnAimPositionChanged(ray.GetPoint(enter));
+        return ray.GetPoint(enter);
     }
 
     public void TakeDamage(float damage)

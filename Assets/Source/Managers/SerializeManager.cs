@@ -82,4 +82,14 @@ public static class SerializeManager
     {
         SetBool("first_play", isFirstPlay);
     }
+
+    public static int GetMoney()
+    {
+        return GetInt("money", 0);
+    }
+
+    public static void SetMoney(int value)
+    {
+        SetInt("money", value);
+    }
 }
