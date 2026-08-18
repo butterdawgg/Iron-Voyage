@@ -1,3 +1,9 @@
 # Iron Voyage
 
-The game is a 3D top-down roguelike shooter where the player controls the captain of a pirate ship. Across seven increasingly difficult rounds, the player navigates procedurally generated water-based levels, fights enemy ships, and earns points and new ship parts by defeating enemies. Between rounds, players can buy, equip, and upgrade parts that alter the ship’s stats or provide special abilities, creating trade-offs between attributes such as speed, maneuverability, and defense. The core focus of the project is the ship-part swapping and progression system, supported by ship movement, combat, enemy variety, and procedural level generation.
+The game is a 3D top-down roguelike shooter where the player controls the captain of a pirate ship.
+
+Across seven increasingly difficult rounds, the player navigates procedurally generated water-based levels, fights enemy ships, and earns points and new ship parts by defeating enemies.
+
+Between rounds, players can buy, equip, and upgrade parts that alter the ship’s stats or provide special abilities, creating trade-offs between attributes such as speed, maneuverability, and defense.
+
+The core focus of the project is the ship-part swapping and progression system, supported by ship movement, combat, enemy variety, and procedural level generation.
